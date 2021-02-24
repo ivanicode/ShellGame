@@ -65,3 +65,16 @@
   top: 160px
 }
 
+.win {
+  position: absolute;
+  left: 225px;
+  top: 220px;
+  display: none;
+}
+
+.lose {
+  position: absolute;
+  left: 225px;
+  top: 220px;
+  display: none;
+}

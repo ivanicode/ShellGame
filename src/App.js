@@ -13,6 +13,7 @@ function App() {
     [320, 210, 100],
     [320, 100, 210]
   ]
+  
   const [newKittyPosition, setNewKittyPosition] = useState(positionConfigurations[0])
   const [kittyWithBall, setKittyWithBall] = useState(-1)
   const [kittyWithBallIsVisible, setKittyWithBallIsVisible] = useState(false)
@@ -53,9 +54,6 @@ function App() {
   }
 
   function clickedKitty(event){
-    console.log(newKittyPosition)
-    console.log(ballLeft)
-    console.log(kittyWithBall)
     if(kittyWithBall == event.target.dataset.nr){
       setBallLeft(newKittyPosition[kittyWithBall] + 36)
       setKittyWithBallIsVisible(true)
