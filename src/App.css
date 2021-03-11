@@ -30,12 +30,12 @@
   position: absolute;
   left: 100px;
   top: 70px;
-  transition: left 2s ease;  
+  transition: left 1s ease;  
 }
 
 .second {
   position: absolute;
-  transition: left 2s ease;
+  transition: left 1s ease;
   left: 210px;
   top: 70px;
 }
@@ -44,7 +44,7 @@
   position: absolute;
   left: 320px;
   top: 70px;
-  transition: left 2s ease
+  transition: left 1s ease
 }
 
 .button {
@@ -65,16 +65,8 @@
   top: 160px
 }
 
-.win {
+.message {
   position: absolute;
   left: 225px;
   top: 220px;
-  display: none;
-}
-
-.lose {
-  position: absolute;
-  left: 225px;
-  top: 220px;
-  display: none;
 }
