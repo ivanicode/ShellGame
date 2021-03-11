@@ -13,17 +13,14 @@ function App() {
     [320, 210, 100],
     [320, 100, 210]
   ]
+  
   const [newKittyPosition, setNewKittyPosition] = useState(positionConfigurations[0])
   const [kittyWithBall, setKittyWithBall] = useState(-1)
   const [kittyWithBallIsVisible, setKittyWithBallIsVisible] = useState(false)
   const [ballLeft, setBallLeft] = useState(0)
-  /*function foo(event){
-    console.log(event.target.dataset.nr)
-    console.log(event.target.getAttribute('data-nr'))
-    Array.from(event.currentTarget.children).forEach((el) => {
-      el.className === 
-    })
-  }*/
+  const [message, setMessage] = useState("")
+  const [disabledButton, setDisabledButton] = useState(false)
+
   function getRandomIntInclusive(min, max) {
     let randomNumber;
     do {
@@ -34,34 +31,35 @@ function App() {
   }
   const whichKitty = getRandomIntInclusive(0, 2)
   function buttonClicked(){
-    
+    setNewKittyPosition(positionConfigurations[0])
+    setDisabledButton(true)
+    setMessage("")
     setKittyWithBall(whichKitty) 
-    setBallLeft((whichKitty * 110) + 136) //136 246 356
+    setBallLeft((whichKitty * 110) + 136)
     setKittyWithBallIsVisible(true)
     window.setTimeout(() => {
         setKittyWithBallIsVisible(false)
     }, 2000)
     window.setTimeout(() => {
-      const numberOfSwitches = 3;
+      const numberOfSwitches = 5;
       for(let i = 0; i < numberOfSwitches; i++){
         setKittyWithBallIsVisible(false)
         window.setTimeout(() => {
           setNewKittyPosition(positionConfigurations[getRandomIntInclusive(1, 5)])
-        }, i * 2000)
+        }, i * 1000)
       }
     }, 2000)
   }
 
   function clickedKitty(event){
-    console.log(newKittyPosition)
-    console.log(ballLeft)
-    console.log(kittyWithBall)
     if(kittyWithBall == event.target.dataset.nr){
       setBallLeft(newKittyPosition[kittyWithBall] + 36)
       setKittyWithBallIsVisible(true)
+      setMessage("Wygrana!")
     } else {
-      console.log("To nie ten kotek!")
+      setMessage("Przegrana...")
     }
+    setDisabledButton(false)
   }
 
   return (
@@ -73,7 +71,9 @@ function App() {
         <img src={happy} style={{left: newKittyPosition[1]}} className="kitty second" alt="kitty" data-nr={1} onClick={clickedKitty} />
         <img src={happy} style={{left: newKittyPosition[2]}} className="kitty third" alt="kitty" data-nr={2} onClick={clickedKitty} />
         <img src={wool} id="wool" style={{left: ballLeft}} className={kittyWithBallIsVisible ? "visibleWool" : "wool"} alt="wool" />
-        <button className="button" onClick={buttonClicked}>Start</button>
+        {console.log(disabledButton)}
+        <button className="button" onClick={buttonClicked} disabled={disabledButton}>Start</button>
+        <p className="message">{message}</p>
       </div>
     </div>
   );
