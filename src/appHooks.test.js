@@ -71,7 +71,7 @@ describe('App hooks', () => {
                 hookResult.result.current.clickedKitty({target: {dataset: {nr: 2}}})
                 
             })
-            expect(hookResult.result.current.message).toEqual("You win!")
+            expect(hookResult.result.current.message).toEqual("You won!")
             expect(hookResult.result.current.kittyWithBallIsVisible).toEqual(true)
         })
         it('should display loose message', () => {

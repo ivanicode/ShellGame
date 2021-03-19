@@ -46,7 +46,7 @@ export function useGame(){
     if(kittyWithBall === parseInt(event.target.dataset.nr, 10)){
       setBallLeft(newKittyPosition[kittyWithBall] + 36)
       setKittyWithBallIsVisible(true)
-      setMessage("You win!")
+      setMessage("You won!")
     } else {
       setMessage("You lose...")
     }
