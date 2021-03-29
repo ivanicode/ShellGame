@@ -10,7 +10,8 @@ export function useGame(){
     [320, 210, 100],
     [320, 100, 210]
   ]
-      
+  
+  const [ableToClickKitty, setAbleToClickKitty] = useState(false)
   const [newKittyPosition, setNewKittyPosition] = useState(positionConfigurations[0])
   const [kittyWithBall, setKittyWithBall] = useState(-1)
   const [kittyWithBallIsVisible, setKittyWithBallIsVisible] = useState(false)
@@ -37,11 +38,12 @@ export function useGame(){
         counter++
         if(counter >= 10){
           clearInterval(intervalHandler)
+          setAbleToClickKitty(true)
         }
       }, 500)
     }, 1000)
   }
-
+  
   function clickedKitty(event){
     if(kittyWithBall === parseInt(event.target.dataset.nr, 10)){
       setBallLeft(newKittyPosition[kittyWithBall] + 36)
@@ -53,7 +55,7 @@ export function useGame(){
     setDisabledButton(false)
   }
 
-  return { buttonClicked, clickedKitty, message, disabledButton, ballLeft, kittyWithBallIsVisible, newKittyPosition }
+  return { buttonClicked, clickedKitty, message, disabledButton, ballLeft, kittyWithBallIsVisible, newKittyPosition, ableToClickKitty }
   
 }
 
